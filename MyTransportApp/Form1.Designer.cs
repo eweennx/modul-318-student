@@ -47,8 +47,6 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelZeit = new System.Windows.Forms.Label();
-            this.comboBoxStartOrtVerbindung = new System.Windows.Forms.ComboBox();
-            this.comboBoxZielOrtVerbindung = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonVerbindungenSuchen = new System.Windows.Forms.Button();
@@ -61,6 +59,10 @@
             this.Nach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ankunftszeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dauer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBoxStart = new System.Windows.Forms.TextBox();
+            this.textBoxZielStation = new System.Windows.Forms.TextBox();
+            this.listBoxStartVorschlaege = new System.Windows.Forms.ListBox();
+            this.listBoxZielVorschlaege = new System.Windows.Forms.ListBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAbfahrtstafel)).BeginInit();
             this.panel3.SuspendLayout();
@@ -248,28 +250,10 @@
             this.labelZeit.Size = new System.Drawing.Size(0, 105);
             this.labelZeit.TabIndex = 29;
             // 
-            // comboBoxStartOrtVerbindung
-            // 
-            this.comboBoxStartOrtVerbindung.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.comboBoxStartOrtVerbindung.FormattingEnabled = true;
-            this.comboBoxStartOrtVerbindung.Location = new System.Drawing.Point(395, 120);
-            this.comboBoxStartOrtVerbindung.Name = "comboBoxStartOrtVerbindung";
-            this.comboBoxStartOrtVerbindung.Size = new System.Drawing.Size(403, 39);
-            this.comboBoxStartOrtVerbindung.TabIndex = 12;
-            this.comboBoxStartOrtVerbindung.SelectedIndexChanged += new System.EventHandler(this.comboBoxStartOrtVerbindung_SelectedIndexChanged);
-            // 
-            // comboBoxZielOrtVerbindung
-            // 
-            this.comboBoxZielOrtVerbindung.FormattingEnabled = true;
-            this.comboBoxZielOrtVerbindung.Location = new System.Drawing.Point(395, 196);
-            this.comboBoxZielOrtVerbindung.Name = "comboBoxZielOrtVerbindung";
-            this.comboBoxZielOrtVerbindung.Size = new System.Drawing.Size(403, 39);
-            this.comboBoxZielOrtVerbindung.TabIndex = 13;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(159, 120);
+            this.label2.Location = new System.Drawing.Point(53, 153);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 32);
             this.label2.TabIndex = 14;
@@ -278,7 +262,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(159, 196);
+            this.label4.Location = new System.Drawing.Point(635, 157);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 32);
             this.label4.TabIndex = 15;
@@ -286,19 +270,18 @@
             // 
             // buttonVerbindungenSuchen
             // 
-            this.buttonVerbindungenSuchen.Location = new System.Drawing.Point(564, 262);
+            this.buttonVerbindungenSuchen.Location = new System.Drawing.Point(498, 435);
             this.buttonVerbindungenSuchen.Name = "buttonVerbindungenSuchen";
             this.buttonVerbindungenSuchen.Size = new System.Drawing.Size(234, 64);
             this.buttonVerbindungenSuchen.TabIndex = 16;
             this.buttonVerbindungenSuchen.Text = "Suchen";
             this.buttonVerbindungenSuchen.UseVisualStyleBackColor = true;
-            this.buttonVerbindungenSuchen.Click += new System.EventHandler(this.buttonVerbindungenSuchen_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(171, 14);
+            this.label5.Location = new System.Drawing.Point(283, 38);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(627, 69);
             this.label5.TabIndex = 17;
@@ -307,16 +290,18 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.listBoxZielVorschlaege);
+            this.panel1.Controls.Add(this.listBoxStartVorschlaege);
+            this.panel1.Controls.Add(this.textBoxZielStation);
+            this.panel1.Controls.Add(this.textBoxStart);
             this.panel1.Controls.Add(this.dataGridViewVerbindungen);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.buttonVerbindungenSuchen);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.comboBoxZielOrtVerbindung);
-            this.panel1.Controls.Add(this.comboBoxStartOrtVerbindung);
             this.panel1.Location = new System.Drawing.Point(60, 212);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1192, 961);
+            this.panel1.Size = new System.Drawing.Size(1192, 1101);
             this.panel1.TabIndex = 26;
             // 
             // dataGridViewVerbindungen
@@ -330,7 +315,7 @@
             this.Nach,
             this.Ankunftszeit,
             this.Dauer});
-            this.dataGridViewVerbindungen.Location = new System.Drawing.Point(59, 404);
+            this.dataGridViewVerbindungen.Location = new System.Drawing.Point(59, 530);
             this.dataGridViewVerbindungen.Name = "dataGridViewVerbindungen";
             this.dataGridViewVerbindungen.RowHeadersWidth = 102;
             this.dataGridViewVerbindungen.RowTemplate.Height = 40;
@@ -384,6 +369,38 @@
             this.Dauer.Name = "Dauer";
             this.Dauer.Width = 250;
             // 
+            // textBoxStart
+            // 
+            this.textBoxStart.Location = new System.Drawing.Point(150, 154);
+            this.textBoxStart.Name = "textBoxStart";
+            this.textBoxStart.Size = new System.Drawing.Size(358, 38);
+            this.textBoxStart.TabIndex = 30;
+            // 
+            // textBoxZielStation
+            // 
+            this.textBoxZielStation.Location = new System.Drawing.Point(715, 153);
+            this.textBoxZielStation.Name = "textBoxZielStation";
+            this.textBoxZielStation.Size = new System.Drawing.Size(358, 38);
+            this.textBoxZielStation.TabIndex = 30;
+            // 
+            // listBoxStartVorschlaege
+            // 
+            this.listBoxStartVorschlaege.FormattingEnabled = true;
+            this.listBoxStartVorschlaege.ItemHeight = 31;
+            this.listBoxStartVorschlaege.Location = new System.Drawing.Point(150, 213);
+            this.listBoxStartVorschlaege.Name = "listBoxStartVorschlaege";
+            this.listBoxStartVorschlaege.Size = new System.Drawing.Size(358, 190);
+            this.listBoxStartVorschlaege.TabIndex = 31;
+            // 
+            // listBoxZielVorschlaege
+            // 
+            this.listBoxZielVorschlaege.FormattingEnabled = true;
+            this.listBoxZielVorschlaege.ItemHeight = 31;
+            this.listBoxZielVorschlaege.Location = new System.Drawing.Point(715, 213);
+            this.listBoxZielVorschlaege.Name = "listBoxZielVorschlaege";
+            this.listBoxZielVorschlaege.Size = new System.Drawing.Size(358, 190);
+            this.listBoxZielVorschlaege.TabIndex = 32;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -428,8 +445,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label labelZeit;
-        private System.Windows.Forms.ComboBox comboBoxStartOrtVerbindung;
-        private System.Windows.Forms.ComboBox comboBoxZielOrtVerbindung;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonVerbindungenSuchen;
@@ -447,6 +462,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nach;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ankunftszeit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dauer;
+        private System.Windows.Forms.ListBox listBoxZielVorschlaege;
+        private System.Windows.Forms.ListBox listBoxStartVorschlaege;
+        private System.Windows.Forms.TextBox textBoxZielStation;
+        private System.Windows.Forms.TextBox textBoxStart;
     }
 }
 

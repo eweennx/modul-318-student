@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SwissTransport.Models;
 using SwissTransport.Core;
-using SwissTransport;
 
 namespace MyTransportApp
 {
@@ -20,15 +19,35 @@ namespace MyTransportApp
         {
             InitializeComponent();
             labelZeit.Text = DateTime.Now.ToString("HH:mm");
-        }
-
-       
-
-        private void comboBoxStartOrtVerbindung_SelectedIndexChanged(object sender, EventArgs e)
-        {
             
         }
 
+
+
+        private void textBoxStart_TextChanged(object sender, EventArgs e)
+        {
+            //anzeigen von vorschlägen
+            listBoxStartVorschlaege.Items.Clear();
+            Stations Vorschlag = transport.GetStations(textBoxStart.Text);
+
+            foreach (Station station in Vorschlag.StationList)
+            {
+                listBoxStartVorschlaege.Items.Add(station.Name);
+            }
+        }
+
+
+        private void textBoxZielStation_TextChanged(object sender, EventArgs e)
+        {
+            //anzeigen von vorschlägen
+            listBoxZielVorschlaege.Items.Clear();
+            Stations Vorschlag = transport.GetStations(textBoxZielStation.Text);
+
+            foreach (Station station in Vorschlag.StationList)
+            {
+                listBoxZielVorschlaege.Items.Add(station.Name);
+            }
+        }
 
         public void Verbindungen(string from, string to)
         {
@@ -49,10 +68,21 @@ namespace MyTransportApp
 
         private void buttonVerbindungenSuchen_Click(object sender, EventArgs e)
         {
-            Verbindungen(comboBoxStartOrtVerbindung.Text, comboBoxZielOrtVerbindung.Text);
+            var conections = transport.GetConnections(textBoxZielStation.Text, textBoxStart.Text);
+            for (int i = 0; i < 4; i++)
+            {
+                dataGridViewVerbindungen.Rows.Add(new string[]
+                {
+                    conections.ConnectionList[i].From.Platform.ToString(),
+                    conections.ConnectionList[i].From.Departure.ToString(),
+                    conections.ConnectionList[i].To.Arrival.ToString(),
+                    conections.ConnectionList[i].To.Delay.ToString(),
+                    conections.ConnectionList[i].Duration.ToString(),
+                });
+            }
         }
-    } 
-}
+    }
+ } 
        
 
 
