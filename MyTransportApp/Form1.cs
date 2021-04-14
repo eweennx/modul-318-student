@@ -19,5 +19,7 @@ namespace MyTransportApp
             InitializeComponent();
             labelUhrzeit.Text = DateTime.Now.ToString("HH:mm");
         }
+
+        
     }
 }

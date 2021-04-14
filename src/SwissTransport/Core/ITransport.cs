@@ -11,6 +11,5 @@
         StationBoardRoot GetStationBoard(string station, string id);
 
         Connections GetConnections(string fromStation, string toStation);
-        string GetStations();
     }
 }
