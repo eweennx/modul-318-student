@@ -40,33 +40,32 @@
             this.buttonAbfahrtstafelSuchen = new System.Windows.Forms.Button();
             this.buttonNaechsteStation = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.labelZeit = new System.Windows.Forms.Label();
-            this.comboBoxStartOrtVerbindung = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.GleisKante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Zeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nummer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Von = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ankunftszeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dauer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewAbfahrtstafel = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.labelZeit = new System.Windows.Forms.Label();
+            this.comboBoxStartOrtVerbindung = new System.Windows.Forms.ComboBox();
+            this.comboBoxZielOrtVerbindung = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.buttonVerbindungenSuchen = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dataGridViewVerbindungen = new System.Windows.Forms.DataGridView();
+            this.GleisKante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Zeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Von = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ankunftszeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dauer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAbfahrtstafel)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVerbindungen)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -171,7 +170,7 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.dataGridView2);
+            this.panel2.Controls.Add(this.dataGridViewAbfahrtstafel);
             this.panel2.Controls.Add(this.buttonAbfahrtstafelSuchen);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
@@ -180,6 +179,54 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(834, 662);
             this.panel2.TabIndex = 27;
+            // 
+            // dataGridViewAbfahrtstafel
+            // 
+            this.dataGridViewAbfahrtstafel.AllowUserToOrderColumns = true;
+            this.dataGridViewAbfahrtstafel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAbfahrtstafel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn5});
+            this.dataGridViewAbfahrtstafel.Location = new System.Drawing.Point(49, 276);
+            this.dataGridViewAbfahrtstafel.Name = "dataGridViewAbfahrtstafel";
+            this.dataGridViewAbfahrtstafel.RowHeadersWidth = 102;
+            this.dataGridViewAbfahrtstafel.RowTemplate.Height = 40;
+            this.dataGridViewAbfahrtstafel.Size = new System.Drawing.Size(736, 356);
+            this.dataGridViewAbfahrtstafel.TabIndex = 31;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Kante";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 12;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 144;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Zeit";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 12;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 117;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Nummer";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 12;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 176;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Nach";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 12;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 135;
             // 
             // panel3
             // 
@@ -198,11 +245,12 @@
             this.labelZeit.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelZeit.Location = new System.Drawing.Point(1666, 54);
             this.labelZeit.Name = "labelZeit";
-            this.labelZeit.Size = new System.Drawing.Size(0, 107);
+            this.labelZeit.Size = new System.Drawing.Size(0, 105);
             this.labelZeit.TabIndex = 29;
             // 
             // comboBoxStartOrtVerbindung
             // 
+            this.comboBoxStartOrtVerbindung.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.comboBoxStartOrtVerbindung.FormattingEnabled = true;
             this.comboBoxStartOrtVerbindung.Location = new System.Drawing.Point(395, 120);
             this.comboBoxStartOrtVerbindung.Name = "comboBoxStartOrtVerbindung";
@@ -210,13 +258,13 @@
             this.comboBoxStartOrtVerbindung.TabIndex = 12;
             this.comboBoxStartOrtVerbindung.SelectedIndexChanged += new System.EventHandler(this.comboBoxStartOrtVerbindung_SelectedIndexChanged);
             // 
-            // comboBox2
+            // comboBoxZielOrtVerbindung
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(395, 196);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(403, 39);
-            this.comboBox2.TabIndex = 13;
+            this.comboBoxZielOrtVerbindung.FormattingEnabled = true;
+            this.comboBoxZielOrtVerbindung.Location = new System.Drawing.Point(395, 196);
+            this.comboBoxZielOrtVerbindung.Name = "comboBoxZielOrtVerbindung";
+            this.comboBoxZielOrtVerbindung.Size = new System.Drawing.Size(403, 39);
+            this.comboBoxZielOrtVerbindung.TabIndex = 13;
             // 
             // label2
             // 
@@ -236,14 +284,15 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "Ziel";
             // 
-            // button1
+            // buttonVerbindungenSuchen
             // 
-            this.button1.Location = new System.Drawing.Point(470, 263);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(234, 64);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Suchen";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonVerbindungenSuchen.Location = new System.Drawing.Point(564, 262);
+            this.buttonVerbindungenSuchen.Name = "buttonVerbindungenSuchen";
+            this.buttonVerbindungenSuchen.Size = new System.Drawing.Size(234, 64);
+            this.buttonVerbindungenSuchen.TabIndex = 16;
+            this.buttonVerbindungenSuchen.Text = "Suchen";
+            this.buttonVerbindungenSuchen.UseVisualStyleBackColor = true;
+            this.buttonVerbindungenSuchen.Click += new System.EventHandler(this.buttonVerbindungenSuchen_Click);
             // 
             // label5
             // 
@@ -258,128 +307,82 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.dataGridViewVerbindungen);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.buttonVerbindungenSuchen);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.comboBox2);
+            this.panel1.Controls.Add(this.comboBoxZielOrtVerbindung);
             this.panel1.Controls.Add(this.comboBoxStartOrtVerbindung);
             this.panel1.Location = new System.Drawing.Point(60, 212);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1192, 961);
             this.panel1.TabIndex = 26;
             // 
-            // dataGridView1
+            // dataGridViewVerbindungen
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewVerbindungen.AllowUserToOrderColumns = true;
+            this.dataGridViewVerbindungen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewVerbindungen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.GleisKante,
             this.Zeit,
-            this.Nummer,
             this.Von,
             this.Nach,
             this.Ankunftszeit,
             this.Dauer});
-            this.dataGridView1.Location = new System.Drawing.Point(59, 404);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 102;
-            this.dataGridView1.RowTemplate.Height = 40;
-            this.dataGridView1.Size = new System.Drawing.Size(1074, 508);
-            this.dataGridView1.TabIndex = 30;
+            this.dataGridViewVerbindungen.Location = new System.Drawing.Point(59, 404);
+            this.dataGridViewVerbindungen.Name = "dataGridViewVerbindungen";
+            this.dataGridViewVerbindungen.RowHeadersWidth = 102;
+            this.dataGridViewVerbindungen.RowTemplate.Height = 40;
+            this.dataGridViewVerbindungen.Size = new System.Drawing.Size(1074, 508);
+            this.dataGridViewVerbindungen.TabIndex = 30;
             // 
             // GleisKante
             // 
+            this.GleisKante.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.GleisKante.HeaderText = "Kante";
             this.GleisKante.MinimumWidth = 12;
             this.GleisKante.Name = "GleisKante";
-            this.GleisKante.Width = 110;
+            this.GleisKante.Width = 144;
             // 
             // Zeit
             // 
+            this.Zeit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Zeit.HeaderText = "Zeit";
             this.Zeit.MinimumWidth = 12;
             this.Zeit.Name = "Zeit";
-            this.Zeit.Width = 120;
-            // 
-            // Nummer
-            // 
-            this.Nummer.HeaderText = "Nummer";
-            this.Nummer.MinimumWidth = 12;
-            this.Nummer.Name = "Nummer";
-            this.Nummer.Width = 120;
+            this.Zeit.Width = 117;
             // 
             // Von
             // 
+            this.Von.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Von.HeaderText = "Von";
             this.Von.MinimumWidth = 12;
             this.Von.Name = "Von";
-            this.Von.Width = 200;
+            this.Von.Width = 120;
             // 
             // Nach
             // 
+            this.Nach.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Nach.HeaderText = "Nach";
             this.Nach.MinimumWidth = 12;
             this.Nach.Name = "Nach";
-            this.Nach.Width = 200;
+            this.Nach.Width = 135;
             // 
             // Ankunftszeit
             // 
+            this.Ankunftszeit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Ankunftszeit.HeaderText = "Ankunft";
             this.Ankunftszeit.MinimumWidth = 12;
             this.Ankunftszeit.Name = "Ankunftszeit";
-            this.Ankunftszeit.Width = 120;
+            this.Ankunftszeit.Width = 166;
             // 
             // Dauer
             // 
             this.Dauer.HeaderText = "Dauer";
             this.Dauer.MinimumWidth = 12;
             this.Dauer.Name = "Dauer";
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToOrderColumns = true;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn5});
-            this.dataGridView2.Location = new System.Drawing.Point(49, 276);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 102;
-            this.dataGridView2.RowTemplate.Height = 40;
-            this.dataGridView2.Size = new System.Drawing.Size(736, 356);
-            this.dataGridView2.TabIndex = 31;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Kante";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 12;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Zeit";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 12;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Nummer";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 12;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Nach";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 12;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 250;
+            this.Dauer.Width = 250;
             // 
             // Form1
             // 
@@ -398,12 +401,12 @@
             this.Text = "Form1";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAbfahrtstafel)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVerbindungen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -426,21 +429,20 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label labelZeit;
         private System.Windows.Forms.ComboBox comboBoxStartOrtVerbindung;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBoxZielOrtVerbindung;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonVerbindungenSuchen;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridViewAbfahrtstafel;
+        private System.Windows.Forms.DataGridView dataGridViewVerbindungen;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn GleisKante;
         private System.Windows.Forms.DataGridViewTextBoxColumn Zeit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nummer;
         private System.Windows.Forms.DataGridViewTextBoxColumn Von;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nach;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ankunftszeit;
