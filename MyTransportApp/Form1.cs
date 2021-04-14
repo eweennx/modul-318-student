@@ -22,10 +22,8 @@ namespace MyTransportApp
             
         }
 
-
-
-        private void textBoxStart_TextChanged(object sender, EventArgs e)
-        {
+          private void textBoxStart_TextChanged_1(object sender, EventArgs e)
+          {
             //anzeigen von vorschlägen
             listBoxStartVorschlaege.Items.Clear();
             Stations Vorschlag = transport.GetStations(textBoxStart.Text);
@@ -34,10 +32,9 @@ namespace MyTransportApp
             {
                 listBoxStartVorschlaege.Items.Add(station.Name);
             }
-        }
+          }
 
-
-        private void textBoxZielStation_TextChanged(object sender, EventArgs e)
+        private void textBoxZielStation_TextChanged_1(object sender, EventArgs e)
         {
             //anzeigen von vorschlägen
             listBoxZielVorschlaege.Items.Clear();
@@ -52,7 +49,7 @@ namespace MyTransportApp
         public void Verbindungen(string from, string to)
         {
                 //Bis letztes Ergebniss kommt
-                 for (int i = 0; i < 10; i++)
+                 for (int i = 0; i < 4; i++)
                   {
                         dataGridViewVerbindungen.Rows.Add(new[]
                         {
@@ -68,19 +65,20 @@ namespace MyTransportApp
 
         private void buttonVerbindungenSuchen_Click(object sender, EventArgs e)
         {
-            var conections = transport.GetConnections(textBoxZielStation.Text, textBoxStart.Text);
-            for (int i = 0; i < 4; i++)
-            {
-                dataGridViewVerbindungen.Rows.Add(new string[]
-                {
-                    conections.ConnectionList[i].From.Platform.ToString(),
-                    conections.ConnectionList[i].From.Departure.ToString(),
-                    conections.ConnectionList[i].To.Arrival.ToString(),
-                    conections.ConnectionList[i].To.Delay.ToString(),
-                    conections.ConnectionList[i].Duration.ToString(),
-                });
-            }
+            Verbindungen(textBoxStart.Text, textBoxZielStation.Text);
         }
+
+        private void listBoxStartVorschlaege_MouseClick(object sender, MouseEventArgs e)
+        {
+            textBoxStart.Text = Convert.ToString(listBoxStartVorschlaege.SelectedItem);
+        }
+
+        private void listBoxZielVorschlaege_MouseClick(object sender, MouseEventArgs e)
+        {
+            textBoxZielStation.Text = Convert.ToString(listBoxZielVorschlaege.SelectedItem);
+        }
+
+        
     }
  } 
        

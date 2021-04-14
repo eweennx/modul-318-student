@@ -52,6 +52,10 @@
             this.buttonVerbindungenSuchen = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.listBoxZielVorschlaege = new System.Windows.Forms.ListBox();
+            this.listBoxStartVorschlaege = new System.Windows.Forms.ListBox();
+            this.textBoxZielStation = new System.Windows.Forms.TextBox();
+            this.textBoxStart = new System.Windows.Forms.TextBox();
             this.dataGridViewVerbindungen = new System.Windows.Forms.DataGridView();
             this.GleisKante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Zeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,10 +63,6 @@
             this.Nach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ankunftszeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dauer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBoxStart = new System.Windows.Forms.TextBox();
-            this.textBoxZielStation = new System.Windows.Forms.TextBox();
-            this.listBoxStartVorschlaege = new System.Windows.Forms.ListBox();
-            this.listBoxZielVorschlaege = new System.Windows.Forms.ListBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAbfahrtstafel)).BeginInit();
             this.panel3.SuspendLayout();
@@ -276,6 +276,7 @@
             this.buttonVerbindungenSuchen.TabIndex = 16;
             this.buttonVerbindungenSuchen.Text = "Suchen";
             this.buttonVerbindungenSuchen.UseVisualStyleBackColor = true;
+            this.buttonVerbindungenSuchen.Click += new System.EventHandler(this.buttonVerbindungenSuchen_Click);
             // 
             // label5
             // 
@@ -303,6 +304,42 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1192, 1101);
             this.panel1.TabIndex = 26;
+            // 
+            // listBoxZielVorschlaege
+            // 
+            this.listBoxZielVorschlaege.FormattingEnabled = true;
+            this.listBoxZielVorschlaege.ItemHeight = 31;
+            this.listBoxZielVorschlaege.Location = new System.Drawing.Point(715, 213);
+            this.listBoxZielVorschlaege.Name = "listBoxZielVorschlaege";
+            this.listBoxZielVorschlaege.Size = new System.Drawing.Size(358, 190);
+            this.listBoxZielVorschlaege.TabIndex = 32;
+            this.listBoxZielVorschlaege.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBoxZielVorschlaege_MouseClick);
+            // 
+            // listBoxStartVorschlaege
+            // 
+            this.listBoxStartVorschlaege.FormattingEnabled = true;
+            this.listBoxStartVorschlaege.ItemHeight = 31;
+            this.listBoxStartVorschlaege.Location = new System.Drawing.Point(150, 213);
+            this.listBoxStartVorschlaege.Name = "listBoxStartVorschlaege";
+            this.listBoxStartVorschlaege.Size = new System.Drawing.Size(358, 190);
+            this.listBoxStartVorschlaege.TabIndex = 31;
+            this.listBoxStartVorschlaege.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBoxStartVorschlaege_MouseClick);
+            // 
+            // textBoxZielStation
+            // 
+            this.textBoxZielStation.Location = new System.Drawing.Point(715, 153);
+            this.textBoxZielStation.Name = "textBoxZielStation";
+            this.textBoxZielStation.Size = new System.Drawing.Size(358, 38);
+            this.textBoxZielStation.TabIndex = 30;
+            this.textBoxZielStation.TextChanged += new System.EventHandler(this.textBoxZielStation_TextChanged_1);
+            // 
+            // textBoxStart
+            // 
+            this.textBoxStart.Location = new System.Drawing.Point(150, 154);
+            this.textBoxStart.Name = "textBoxStart";
+            this.textBoxStart.Size = new System.Drawing.Size(358, 38);
+            this.textBoxStart.TabIndex = 30;
+            this.textBoxStart.TextChanged += new System.EventHandler(this.textBoxStart_TextChanged_1);
             // 
             // dataGridViewVerbindungen
             // 
@@ -368,38 +405,6 @@
             this.Dauer.MinimumWidth = 12;
             this.Dauer.Name = "Dauer";
             this.Dauer.Width = 250;
-            // 
-            // textBoxStart
-            // 
-            this.textBoxStart.Location = new System.Drawing.Point(150, 154);
-            this.textBoxStart.Name = "textBoxStart";
-            this.textBoxStart.Size = new System.Drawing.Size(358, 38);
-            this.textBoxStart.TabIndex = 30;
-            // 
-            // textBoxZielStation
-            // 
-            this.textBoxZielStation.Location = new System.Drawing.Point(715, 153);
-            this.textBoxZielStation.Name = "textBoxZielStation";
-            this.textBoxZielStation.Size = new System.Drawing.Size(358, 38);
-            this.textBoxZielStation.TabIndex = 30;
-            // 
-            // listBoxStartVorschlaege
-            // 
-            this.listBoxStartVorschlaege.FormattingEnabled = true;
-            this.listBoxStartVorschlaege.ItemHeight = 31;
-            this.listBoxStartVorschlaege.Location = new System.Drawing.Point(150, 213);
-            this.listBoxStartVorschlaege.Name = "listBoxStartVorschlaege";
-            this.listBoxStartVorschlaege.Size = new System.Drawing.Size(358, 190);
-            this.listBoxStartVorschlaege.TabIndex = 31;
-            // 
-            // listBoxZielVorschlaege
-            // 
-            this.listBoxZielVorschlaege.FormattingEnabled = true;
-            this.listBoxZielVorschlaege.ItemHeight = 31;
-            this.listBoxZielVorschlaege.Location = new System.Drawing.Point(715, 213);
-            this.listBoxZielVorschlaege.Name = "listBoxZielVorschlaege";
-            this.listBoxZielVorschlaege.Size = new System.Drawing.Size(358, 190);
-            this.listBoxZielVorschlaege.TabIndex = 32;
             // 
             // Form1
             // 
