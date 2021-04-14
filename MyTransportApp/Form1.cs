@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SwissTransport;
+using SwissTransport.Core;
 
 namespace MyTransportApp
 {
@@ -15,11 +17,7 @@ namespace MyTransportApp
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void textBoxStartOrt_TextChanged(object sender, EventArgs e)
-        {
-
+            labelUhrzeit.Text = DateTime.Now.ToString("HH:mm");
         }
     }
 }
