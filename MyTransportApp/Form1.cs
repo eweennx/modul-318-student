@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SwissTransport.Models;
 using SwissTransport.Core;
+using System.Net.Mail;
+using System.Diagnostics;
 
 namespace MyTransportApp
 {
@@ -18,90 +20,207 @@ namespace MyTransportApp
         public Form1()
         {
             InitializeComponent();
+           
         }
+
 
         private void timerUhr_Tick(object sender, EventArgs e)
         {
             labelZeit.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
+
         private void textBoxStart_TextChanged_1(object sender, EventArgs e)
           {
-            //anzeigen von vorschlägen
-            listBoxStartVorschlaege.Items.Clear();
-            Stations Vorschlag = transport.GetStations(textBoxStart.Text);
-
-            foreach (Station station in Vorschlag.StationList)
+            try
             {
-                listBoxStartVorschlaege.Items.Add(station.Name);
+                //anzeigen von vorschlägen
+                listBoxStartVorschlaege.Items.Clear();
+                List<Station> stationenStart = transport.GetStations(textBoxStart.Text + "*").StationList;
+
+                foreach (Station station in stationenStart)
+                {
+                    listBoxStartVorschlaege.Items.Add(station.Name);
+                }
             }
-          }
+            catch
+            {
+
+            }   
+         }
+
 
         private void textBoxZielStation_TextChanged_1(object sender, EventArgs e)
         {
-            //anzeigen von vorschlägen
-            listBoxZielVorschlaege.Items.Clear();
-            Stations Vorschlag = transport.GetStations(textBoxZielStation.Text);
-
-            foreach (Station station in Vorschlag.StationList)
+            try
             {
-                listBoxZielVorschlaege.Items.Add(station.Name);
+                //anzeigen von vorschlägen
+                listBoxZielVorschlaege.Items.Clear();
+                List<Station> stationenZiel = transport.GetStations(textBoxZielStation.Text + "*").StationList;
+
+                foreach (Station station in stationenZiel)
+                {
+                    listBoxZielVorschlaege.Items.Add(station.Name);
+                }
+            }
+            catch
+            {
+
             }
         }
 
+
+        private void buttonChangeStation_Click(object sender, EventArgs e)
+        {
+            try
+            {
+            string StartStation = textBoxStart.Text;
+            string ZielStation = textBoxZielStation.Text;
+            textBoxStart.Text = ZielStation;
+            textBoxZielStation.Text = StartStation;
+            }
+            catch
+            {
+
+            }
+        }
+
+
         public void Verbindungen(string from, string to)
         {
-                 for (int i = 0; i < 4; i++)
+            
+            List <Connection> VerbindungenSuchen = transport.GetConnections(from, to).ConnectionList;
+                 
+            for (int i = 0; i < 4; i++)
                  {
                      //Dauer Trimmen, das nicht 00d oder 00h steht
                      string VerbindungDauer = transport.GetConnections(from, to).ConnectionList[i].Duration.ToString();
                      string resultVerbindungsDauer = VerbindungDauer.TrimStart(" 0d".ToCharArray());
                      string resultVerbindungsDauer2 = resultVerbindungsDauer.Trim(":".ToCharArray());
 
+                
                     dataGridViewVerbindungen.Rows.Add(new[]
                     {
-                         transport.GetConnections(from, to).ConnectionList[i].From.Platform,
-                         transport.GetConnections(from, to).ConnectionList[i].From.Departure.ToString(),
-                         transport.GetConnections(from, to).ConnectionList[i].From.Station.Name,
-                         transport.GetConnections(from, to).ConnectionList[i].To.Station.Name,
+                         VerbindungenSuchen[i].From.Platform,
+                         VerbindungenSuchen[i].From.Departure?.ToString("HH:mm") ?? "unbekannt",
+                         VerbindungenSuchen[i].From.Station.Name,
+                         VerbindungenSuchen[i].To.Station.Name,
                          resultVerbindungsDauer2
                     }); ; ;
                  }
         }
 
+
         private void buttonVerbindungenSuchen_Click(object sender, EventArgs e)
         {
+            try
+            {
             dataGridViewVerbindungen.Rows.Clear();
             dataGridViewVerbindungen.Refresh();
             Verbindungen(textBoxStart.Text, textBoxZielStation.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Bitte gebe eine Start- und Ziel-Station ein!");
+            }
         }
+
 
         private void listBoxStartVorschlaege_SelectedIndexChanged(object sender, MouseEventArgs e)
         {
             textBoxStart.Text = Convert.ToString(listBoxStartVorschlaege.SelectedItem);
         }
 
+
         private void listBoxZielVorschlaege_SelectedIndexChanged(object sender, MouseEventArgs e)
         {
             textBoxZielStation.Text = Convert.ToString(listBoxZielVorschlaege.SelectedItem);
         }
 
+
         private void textBoxStation_TextChanged(object sender, EventArgs e)
         {
-            listBoxStationVorschlaege.Items.Clear();
-            Stations Vorschlag = transport.GetStations(textBoxStation.Text);
-
-            foreach (Station station in Vorschlag.StationList)
+            try
             {
-                listBoxStationVorschlaege.Items.Add(station.Name);
-            }
-        }
+                listBoxStationVorschlaege.Items.Clear();
+                List<Station> stationenStation = transport.GetStations(textBoxStation.Text + "*").StationList;
 
+                foreach (Station station in stationenStation)
+                {
+                    listBoxStationVorschlaege.Items.Add(station.Name);
+                }
+            }
+
+            catch
+            {
+
+            }
+
+        }
+  
 
         private void listBoxStationVorschlaege_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBoxStation.Text = listBoxStationVorschlaege.SelectedItem.ToString();
         }
+
+
+        private string timetabelId(string station)
+        {
+            return transport.GetStations(station).StationList[0].Id.ToString();
+        }
+
+
+        private void buttonAbfahrtstafelSuchen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dataGridViewAbfahrtstafel.Rows.Clear();
+                dataGridViewAbfahrtstafel.Refresh();
+                List<StationBoard> AbfahrtsBoard = transport.GetStationBoard(textBoxStation.Text, timetabelId(textBoxStation.Text)).Entries;
+
+                for (int i = 0; i < 10; i++)
+                {
+                    dataGridViewAbfahrtstafel.Rows.Add(new string[]
+                    {
+                   AbfahrtsBoard[i].Stop.Departure.ToString("HH:mm") ?? "unbekannt",
+                   AbfahrtsBoard[i].Number.ToString(),
+                   AbfahrtsBoard[i].To.ToString()
+                    });
+                    ;
+                }
+                
+            }
+            catch
+            {
+                MessageBox.Show("Geht nicht !");
+            }
+
+        }
+
+        private void buttonSendMail_Click (object sender, EventArgs e)
+        {
+            var MailMessage = new MailMessage();
+            {
+                MailMessage.Subject = "ÖV Verbindungen";
+                MailMessage.From = new MailAddress("steam@vac.uk");
+                MailMessage.IsBodyHtml = true;
+
+
+                MailMessage.Body = "Von: " + this.textBoxStart.Text + "%0D%0A";
+                MailMessage.Body = "Nach: " + this.textBoxZielStation.Text + " %0D%0A";
+                
+                    for (int i = 0; i< this.dataGridViewVerbindungen.RowCount - 1; i++)
+                    {
+                    MailMessage.Body += "Gleis: " + this.dataGridViewVerbindungen.Rows[i].Cells[0].Value + "&#9";
+                    MailMessage.Body += "Zeit: " + this.dataGridViewVerbindungen.Rows[i].Cells[1].Value + "&#9";
+                    MailMessage.Body += "Dauer: " + this.dataGridViewVerbindungen.Rows[i].Cells[4].Value + "&#9";
+                    }
+                Process.Start(@"mailto:?subject=" + MailMessage.Subject + "&body=" + MailMessage.Body);
+            }
+        }
+
+       
     }
  } 
        
