@@ -18,11 +18,14 @@ namespace MyTransportApp
         public Form1()
         {
             InitializeComponent();
-            labelZeit.Text = DateTime.Now.ToString("HH:mm");
-            
         }
 
-          private void textBoxStart_TextChanged_1(object sender, EventArgs e)
+        private void timerUhr_Tick(object sender, EventArgs e)
+        {
+            labelZeit.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private void textBoxStart_TextChanged_1(object sender, EventArgs e)
           {
             //anzeigen von vorschlägen
             listBoxStartVorschlaege.Items.Clear();
@@ -48,6 +51,7 @@ namespace MyTransportApp
 
         public void Verbindungen(string from, string to)
         {
+           
                 //Bis letztes Ergebniss kommt
                  for (int i = 0; i < 4; i++)
                   {
@@ -57,8 +61,8 @@ namespace MyTransportApp
                             transport.GetConnections(from, to).ConnectionList[i].From.Departure.ToString(),     
                             transport.GetConnections(from, to).ConnectionList[i].From.Station.Name,             
                             transport.GetConnections(from, to).ConnectionList[i].To.Station.Name,
-                            transport.GetConnections(from, to).ConnectionList[i].From.Arrival.ToString(),
-                            transport.GetConnections(from, to).ConnectionList[i].Duration                     
+                            transport.GetConnections(from, to).ConnectionList[i].Duration.ToString(),
+                           
                         } );
                   }
         }

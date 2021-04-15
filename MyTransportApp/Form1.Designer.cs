@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.labelUhrzeit = new System.Windows.Forms.Label();
@@ -46,7 +47,6 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.labelZeit = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonVerbindungenSuchen = new System.Windows.Forms.Button();
@@ -61,8 +61,9 @@
             this.Zeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Von = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ankunftszeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dauer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timerUhrzeit = new System.Windows.Forms.Timer(this.components);
+            this.labelZeit = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAbfahrtstafel)).BeginInit();
             this.panel3.SuspendLayout();
@@ -241,15 +242,6 @@
             this.panel3.Size = new System.Drawing.Size(834, 268);
             this.panel3.TabIndex = 28;
             // 
-            // labelZeit
-            // 
-            this.labelZeit.AutoSize = true;
-            this.labelZeit.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelZeit.Location = new System.Drawing.Point(1666, 54);
-            this.labelZeit.Name = "labelZeit";
-            this.labelZeit.Size = new System.Drawing.Size(0, 105);
-            this.labelZeit.TabIndex = 29;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -344,13 +336,13 @@
             // dataGridViewVerbindungen
             // 
             this.dataGridViewVerbindungen.AllowUserToOrderColumns = true;
+            this.dataGridViewVerbindungen.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridViewVerbindungen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewVerbindungen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.GleisKante,
             this.Zeit,
             this.Von,
             this.Nach,
-            this.Ankunftszeit,
             this.Dauer});
             this.dataGridViewVerbindungen.Location = new System.Drawing.Point(59, 530);
             this.dataGridViewVerbindungen.Name = "dataGridViewVerbindungen";
@@ -363,7 +355,7 @@
             // 
             this.GleisKante.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.GleisKante.HeaderText = "Kante";
-            this.GleisKante.MinimumWidth = 12;
+            this.GleisKante.MinimumWidth = 20;
             this.GleisKante.Name = "GleisKante";
             this.GleisKante.Width = 144;
             // 
@@ -371,7 +363,7 @@
             // 
             this.Zeit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Zeit.HeaderText = "Zeit";
-            this.Zeit.MinimumWidth = 12;
+            this.Zeit.MinimumWidth = 75;
             this.Zeit.Name = "Zeit";
             this.Zeit.Width = 117;
             // 
@@ -379,7 +371,7 @@
             // 
             this.Von.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Von.HeaderText = "Von";
-            this.Von.MinimumWidth = 12;
+            this.Von.MinimumWidth = 75;
             this.Von.Name = "Von";
             this.Von.Width = 120;
             // 
@@ -387,24 +379,32 @@
             // 
             this.Nach.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Nach.HeaderText = "Nach";
-            this.Nach.MinimumWidth = 12;
+            this.Nach.MinimumWidth = 75;
             this.Nach.Name = "Nach";
             this.Nach.Width = 135;
-            // 
-            // Ankunftszeit
-            // 
-            this.Ankunftszeit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Ankunftszeit.HeaderText = "Ankunft";
-            this.Ankunftszeit.MinimumWidth = 12;
-            this.Ankunftszeit.Name = "Ankunftszeit";
-            this.Ankunftszeit.Width = 166;
             // 
             // Dauer
             // 
             this.Dauer.HeaderText = "Dauer";
-            this.Dauer.MinimumWidth = 12;
+            this.Dauer.MinimumWidth = 75;
             this.Dauer.Name = "Dauer";
-            this.Dauer.Width = 250;
+            this.Dauer.Width = 75;
+            // 
+            // timerUhrzeit
+            // 
+            this.timerUhrzeit.Enabled = true;
+            this.timerUhrzeit.Interval = 500;
+            this.timerUhrzeit.Tick += new System.EventHandler(this.timerUhr_Tick);
+            // 
+            // labelZeit
+            // 
+            this.labelZeit.AutoSize = true;
+            this.labelZeit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelZeit.Location = new System.Drawing.Point(1638, 74);
+            this.labelZeit.Name = "labelZeit";
+            this.labelZeit.Size = new System.Drawing.Size(226, 69);
+            this.labelZeit.TabIndex = 29;
+            this.labelZeit.Text = "Uhrzeit";
             // 
             // Form1
             // 
@@ -449,7 +449,6 @@
         private System.Windows.Forms.Button buttonNaechsteStation;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label labelZeit;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonVerbindungenSuchen;
@@ -461,16 +460,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GleisKante;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Zeit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Von;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nach;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ankunftszeit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dauer;
         private System.Windows.Forms.ListBox listBoxZielVorschlaege;
         private System.Windows.Forms.ListBox listBoxStartVorschlaege;
         private System.Windows.Forms.TextBox textBoxZielStation;
         private System.Windows.Forms.TextBox textBoxStart;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GleisKante;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Zeit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Von;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nach;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dauer;
+        private System.Windows.Forms.Timer timerUhrzeit;
+        private System.Windows.Forms.Label labelZeit;
     }
 }
 
