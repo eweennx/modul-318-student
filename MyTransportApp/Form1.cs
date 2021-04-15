@@ -57,8 +57,12 @@ namespace MyTransportApp
                  {
                      //Dauer Trimmen, das nicht 00d oder 00h steht
                      string VerbindungDauer = transport.GetConnections(from, to).ConnectionList[i].Duration.ToString();
-                     string result = VerbindungDauer.TrimStart(" 1234567890d".ToCharArray());
-                     string result2 = result.Trim(":".ToCharArray());
+                     string resultVerbindungsDauer = VerbindungDauer.TrimStart(" 0d".ToCharArray());
+                     string resultVerbindungsDauer2 = resultVerbindungsDauer.Trim(":".ToCharArray());
+
+                    //Datum Trimmen, nur Zeit nicht Tag,Monat,Jahr
+                    
+                    
 
                     dataGridViewVerbindungen.Rows.Add(new[]
                     {
@@ -66,13 +70,15 @@ namespace MyTransportApp
                          transport.GetConnections(from, to).ConnectionList[i].From.Departure.ToString(),
                          transport.GetConnections(from, to).ConnectionList[i].From.Station.Name,
                          transport.GetConnections(from, to).ConnectionList[i].To.Station.Name,
-                         result2
+                         resultVerbindungsDauer2
                     }); ; ;
                  }
         }
 
         private void buttonVerbindungenSuchen_Click(object sender, EventArgs e)
         {
+            dataGridViewVerbindungen.Rows.Clear();
+            dataGridViewVerbindungen.Refresh();
             Verbindungen(textBoxStart.Text, textBoxZielStation.Text);
         }
 

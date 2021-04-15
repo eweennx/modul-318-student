@@ -18,7 +18,7 @@
         {
             if (string.IsNullOrEmpty(query))
             {
-                throw new ArgumentNullException(nameof(query));
+               throw new ArgumentNullException(nameof(query));
             }
 
             var uri = new Uri($"{WebApiHost}locations?query={query}");
