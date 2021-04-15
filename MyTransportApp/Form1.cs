@@ -52,19 +52,23 @@ namespace MyTransportApp
         public void Verbindungen(string from, string to)
         {
            
-                //Bis letztes Ergebniss kommt
+                
                  for (int i = 0; i < 4; i++)
-                  {
-                        dataGridViewVerbindungen.Rows.Add(new[]
-                        {
-                            transport.GetConnections(from, to).ConnectionList[i].From.Platform,  
-                            transport.GetConnections(from, to).ConnectionList[i].From.Departure.ToString(),     
-                            transport.GetConnections(from, to).ConnectionList[i].From.Station.Name,             
-                            transport.GetConnections(from, to).ConnectionList[i].To.Station.Name,
-                            transport.GetConnections(from, to).ConnectionList[i].Duration.ToString(),
-                           
-                        } );
-                  }
+                 {
+                     //Dauer Trimmen, das nicht 00d oder 00h steht
+                     string VerbindungDauer = transport.GetConnections(from, to).ConnectionList[i].Duration.ToString();
+                     string result = VerbindungDauer.TrimStart(" 1234567890d".ToCharArray());
+                     string result2 = result.Trim(":".ToCharArray());
+
+                    dataGridViewVerbindungen.Rows.Add(new[]
+                    {
+                         transport.GetConnections(from, to).ConnectionList[i].From.Platform,
+                         transport.GetConnections(from, to).ConnectionList[i].From.Departure.ToString(),
+                         transport.GetConnections(from, to).ConnectionList[i].From.Station.Name,
+                         transport.GetConnections(from, to).ConnectionList[i].To.Station.Name,
+                         result2
+                    }); ; ;
+                 }
         }
 
         private void buttonVerbindungenSuchen_Click(object sender, EventArgs e)

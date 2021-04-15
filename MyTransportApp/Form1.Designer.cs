@@ -57,13 +57,13 @@
             this.textBoxZielStation = new System.Windows.Forms.TextBox();
             this.textBoxStart = new System.Windows.Forms.TextBox();
             this.dataGridViewVerbindungen = new System.Windows.Forms.DataGridView();
+            this.timerUhrzeit = new System.Windows.Forms.Timer(this.components);
+            this.labelZeit = new System.Windows.Forms.Label();
             this.GleisKante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Zeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Von = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dauer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timerUhrzeit = new System.Windows.Forms.Timer(this.components);
-            this.labelZeit = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAbfahrtstafel)).BeginInit();
             this.panel3.SuspendLayout();
@@ -346,10 +346,27 @@
             this.Dauer});
             this.dataGridViewVerbindungen.Location = new System.Drawing.Point(59, 530);
             this.dataGridViewVerbindungen.Name = "dataGridViewVerbindungen";
+            this.dataGridViewVerbindungen.RowHeadersVisible = false;
             this.dataGridViewVerbindungen.RowHeadersWidth = 102;
             this.dataGridViewVerbindungen.RowTemplate.Height = 40;
             this.dataGridViewVerbindungen.Size = new System.Drawing.Size(1074, 508);
             this.dataGridViewVerbindungen.TabIndex = 30;
+            // 
+            // timerUhrzeit
+            // 
+            this.timerUhrzeit.Enabled = true;
+            this.timerUhrzeit.Interval = 500;
+            this.timerUhrzeit.Tick += new System.EventHandler(this.timerUhr_Tick);
+            // 
+            // labelZeit
+            // 
+            this.labelZeit.AutoSize = true;
+            this.labelZeit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelZeit.Location = new System.Drawing.Point(1638, 74);
+            this.labelZeit.Name = "labelZeit";
+            this.labelZeit.Size = new System.Drawing.Size(226, 69);
+            this.labelZeit.TabIndex = 29;
+            this.labelZeit.Text = "Uhrzeit";
             // 
             // GleisKante
             // 
@@ -389,22 +406,6 @@
             this.Dauer.MinimumWidth = 75;
             this.Dauer.Name = "Dauer";
             this.Dauer.Width = 75;
-            // 
-            // timerUhrzeit
-            // 
-            this.timerUhrzeit.Enabled = true;
-            this.timerUhrzeit.Interval = 500;
-            this.timerUhrzeit.Tick += new System.EventHandler(this.timerUhr_Tick);
-            // 
-            // labelZeit
-            // 
-            this.labelZeit.AutoSize = true;
-            this.labelZeit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelZeit.Location = new System.Drawing.Point(1638, 74);
-            this.labelZeit.Name = "labelZeit";
-            this.labelZeit.Size = new System.Drawing.Size(226, 69);
-            this.labelZeit.TabIndex = 29;
-            this.labelZeit.Text = "Uhrzeit";
             // 
             // Form1
             // 
@@ -464,13 +465,13 @@
         private System.Windows.Forms.ListBox listBoxStartVorschlaege;
         private System.Windows.Forms.TextBox textBoxZielStation;
         private System.Windows.Forms.TextBox textBoxStart;
+        private System.Windows.Forms.Timer timerUhrzeit;
+        private System.Windows.Forms.Label labelZeit;
         private System.Windows.Forms.DataGridViewTextBoxColumn GleisKante;
         private System.Windows.Forms.DataGridViewTextBoxColumn Zeit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Von;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nach;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dauer;
-        private System.Windows.Forms.Timer timerUhrzeit;
-        private System.Windows.Forms.Label labelZeit;
     }
 }
 

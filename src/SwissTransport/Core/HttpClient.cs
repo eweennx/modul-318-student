@@ -39,10 +39,14 @@
                 throw new ArgumentNullException(nameof(uri));
             }
 
+
+
             if (converter is null)
             {
                 throw new ArgumentNullException(nameof(uri));
             }
+
+
 
             return converter.Invoke(GetString(uri));
         }
