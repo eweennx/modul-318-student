@@ -33,7 +33,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.labelUhrzeit = new System.Windows.Forms.Label();
             this.splitter2 = new System.Windows.Forms.Splitter();
-            this.comboBoxStation = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -41,6 +40,8 @@
             this.buttonAbfahrtstafelSuchen = new System.Windows.Forms.Button();
             this.buttonNaechsteStation = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.listBoxStationVorschlaege = new System.Windows.Forms.ListBox();
+            this.textBoxStation = new System.Windows.Forms.TextBox();
             this.dataGridViewAbfahrtstafel = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,13 +58,13 @@
             this.textBoxZielStation = new System.Windows.Forms.TextBox();
             this.textBoxStart = new System.Windows.Forms.TextBox();
             this.dataGridViewVerbindungen = new System.Windows.Forms.DataGridView();
-            this.timerUhrzeit = new System.Windows.Forms.Timer(this.components);
-            this.labelZeit = new System.Windows.Forms.Label();
             this.GleisKante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Zeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Von = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dauer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timerUhrzeit = new System.Windows.Forms.Timer(this.components);
+            this.labelZeit = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAbfahrtstafel)).BeginInit();
             this.panel3.SuspendLayout();
@@ -106,14 +107,6 @@
             this.splitter2.TabIndex = 10;
             this.splitter2.TabStop = false;
             // 
-            // comboBoxStation
-            // 
-            this.comboBoxStation.FormattingEnabled = true;
-            this.comboBoxStation.Location = new System.Drawing.Point(255, 124);
-            this.comboBoxStation.Name = "comboBoxStation";
-            this.comboBoxStation.Size = new System.Drawing.Size(403, 39);
-            this.comboBoxStation.TabIndex = 19;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -154,7 +147,7 @@
             // 
             // buttonAbfahrtstafelSuchen
             // 
-            this.buttonAbfahrtstafelSuchen.Location = new System.Drawing.Point(358, 188);
+            this.buttonAbfahrtstafelSuchen.Location = new System.Drawing.Point(295, 384);
             this.buttonAbfahrtstafelSuchen.Name = "buttonAbfahrtstafelSuchen";
             this.buttonAbfahrtstafelSuchen.Size = new System.Drawing.Size(191, 55);
             this.buttonAbfahrtstafelSuchen.TabIndex = 24;
@@ -173,15 +166,34 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.listBoxStationVorschlaege);
+            this.panel2.Controls.Add(this.textBoxStation);
             this.panel2.Controls.Add(this.dataGridViewAbfahrtstafel);
             this.panel2.Controls.Add(this.buttonAbfahrtstafelSuchen);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.comboBoxStation);
-            this.panel2.Location = new System.Drawing.Point(1303, 212);
+            this.panel2.Location = new System.Drawing.Point(1303, 193);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(834, 662);
+            this.panel2.Size = new System.Drawing.Size(834, 852);
             this.panel2.TabIndex = 27;
+            // 
+            // listBoxStationVorschlaege
+            // 
+            this.listBoxStationVorschlaege.FormattingEnabled = true;
+            this.listBoxStationVorschlaege.ItemHeight = 31;
+            this.listBoxStationVorschlaege.Location = new System.Drawing.Point(223, 181);
+            this.listBoxStationVorschlaege.Name = "listBoxStationVorschlaege";
+            this.listBoxStationVorschlaege.Size = new System.Drawing.Size(358, 159);
+            this.listBoxStationVorschlaege.TabIndex = 32;
+            this.listBoxStationVorschlaege.SelectedIndexChanged += new System.EventHandler(this.listBoxStationVorschlaege_SelectedIndexChanged);
+            // 
+            // textBoxStation
+            // 
+            this.textBoxStation.Location = new System.Drawing.Point(223, 128);
+            this.textBoxStation.Name = "textBoxStation";
+            this.textBoxStation.Size = new System.Drawing.Size(358, 38);
+            this.textBoxStation.TabIndex = 30;
+            this.textBoxStation.TextChanged += new System.EventHandler(this.textBoxStation_TextChanged);
             // 
             // dataGridViewAbfahrtstafel
             // 
@@ -192,11 +204,11 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn5});
-            this.dataGridViewAbfahrtstafel.Location = new System.Drawing.Point(49, 276);
+            this.dataGridViewAbfahrtstafel.Location = new System.Drawing.Point(49, 472);
             this.dataGridViewAbfahrtstafel.Name = "dataGridViewAbfahrtstafel";
             this.dataGridViewAbfahrtstafel.RowHeadersWidth = 102;
             this.dataGridViewAbfahrtstafel.RowTemplate.Height = 40;
-            this.dataGridViewAbfahrtstafel.Size = new System.Drawing.Size(736, 356);
+            this.dataGridViewAbfahrtstafel.Size = new System.Drawing.Size(736, 343);
             this.dataGridViewAbfahrtstafel.TabIndex = 31;
             // 
             // dataGridViewTextBoxColumn1
@@ -237,15 +249,15 @@
             this.panel3.Controls.Add(this.buttonNaechsteStation);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.label8);
-            this.panel3.Location = new System.Drawing.Point(1303, 905);
+            this.panel3.Location = new System.Drawing.Point(1303, 1075);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(834, 268);
+            this.panel3.Size = new System.Drawing.Size(834, 238);
             this.panel3.TabIndex = 28;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(53, 153);
+            this.label2.Location = new System.Drawing.Point(53, 144);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 32);
             this.label2.TabIndex = 14;
@@ -254,7 +266,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(635, 157);
+            this.label4.Location = new System.Drawing.Point(626, 144);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 32);
             this.label4.TabIndex = 15;
@@ -262,7 +274,7 @@
             // 
             // buttonVerbindungenSuchen
             // 
-            this.buttonVerbindungenSuchen.Location = new System.Drawing.Point(498, 435);
+            this.buttonVerbindungenSuchen.Location = new System.Drawing.Point(498, 479);
             this.buttonVerbindungenSuchen.Name = "buttonVerbindungenSuchen";
             this.buttonVerbindungenSuchen.Size = new System.Drawing.Size(234, 64);
             this.buttonVerbindungenSuchen.TabIndex = 16;
@@ -274,7 +286,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(283, 38);
+            this.label5.Location = new System.Drawing.Point(280, 6);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(627, 69);
             this.label5.TabIndex = 17;
@@ -292,34 +304,34 @@
             this.panel1.Controls.Add(this.buttonVerbindungenSuchen);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(60, 212);
+            this.panel1.Location = new System.Drawing.Point(60, 186);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1192, 1101);
+            this.panel1.Size = new System.Drawing.Size(1192, 1127);
             this.panel1.TabIndex = 26;
             // 
             // listBoxZielVorschlaege
             // 
             this.listBoxZielVorschlaege.FormattingEnabled = true;
             this.listBoxZielVorschlaege.ItemHeight = 31;
-            this.listBoxZielVorschlaege.Location = new System.Drawing.Point(715, 213);
+            this.listBoxZielVorschlaege.Location = new System.Drawing.Point(715, 209);
             this.listBoxZielVorschlaege.Name = "listBoxZielVorschlaege";
-            this.listBoxZielVorschlaege.Size = new System.Drawing.Size(358, 190);
+            this.listBoxZielVorschlaege.Size = new System.Drawing.Size(358, 252);
             this.listBoxZielVorschlaege.TabIndex = 32;
-            this.listBoxZielVorschlaege.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBoxZielVorschlaege_MouseClick);
+            this.listBoxZielVorschlaege.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBoxZielVorschlaege_SelectedIndexChanged);
             // 
             // listBoxStartVorschlaege
             // 
             this.listBoxStartVorschlaege.FormattingEnabled = true;
             this.listBoxStartVorschlaege.ItemHeight = 31;
-            this.listBoxStartVorschlaege.Location = new System.Drawing.Point(150, 213);
+            this.listBoxStartVorschlaege.Location = new System.Drawing.Point(150, 209);
             this.listBoxStartVorschlaege.Name = "listBoxStartVorschlaege";
-            this.listBoxStartVorschlaege.Size = new System.Drawing.Size(358, 190);
+            this.listBoxStartVorschlaege.Size = new System.Drawing.Size(358, 252);
             this.listBoxStartVorschlaege.TabIndex = 31;
-            this.listBoxStartVorschlaege.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBoxStartVorschlaege_MouseClick);
+            this.listBoxStartVorschlaege.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBoxStartVorschlaege_SelectedIndexChanged);
             // 
             // textBoxZielStation
             // 
-            this.textBoxZielStation.Location = new System.Drawing.Point(715, 153);
+            this.textBoxZielStation.Location = new System.Drawing.Point(715, 138);
             this.textBoxZielStation.Name = "textBoxZielStation";
             this.textBoxZielStation.Size = new System.Drawing.Size(358, 38);
             this.textBoxZielStation.TabIndex = 30;
@@ -327,7 +339,7 @@
             // 
             // textBoxStart
             // 
-            this.textBoxStart.Location = new System.Drawing.Point(150, 154);
+            this.textBoxStart.Location = new System.Drawing.Point(150, 138);
             this.textBoxStart.Name = "textBoxStart";
             this.textBoxStart.Size = new System.Drawing.Size(358, 38);
             this.textBoxStart.TabIndex = 30;
@@ -344,29 +356,13 @@
             this.Von,
             this.Nach,
             this.Dauer});
-            this.dataGridViewVerbindungen.Location = new System.Drawing.Point(59, 530);
+            this.dataGridViewVerbindungen.Location = new System.Drawing.Point(59, 577);
             this.dataGridViewVerbindungen.Name = "dataGridViewVerbindungen";
             this.dataGridViewVerbindungen.RowHeadersVisible = false;
             this.dataGridViewVerbindungen.RowHeadersWidth = 102;
             this.dataGridViewVerbindungen.RowTemplate.Height = 40;
             this.dataGridViewVerbindungen.Size = new System.Drawing.Size(1074, 508);
             this.dataGridViewVerbindungen.TabIndex = 30;
-            // 
-            // timerUhrzeit
-            // 
-            this.timerUhrzeit.Enabled = true;
-            this.timerUhrzeit.Interval = 500;
-            this.timerUhrzeit.Tick += new System.EventHandler(this.timerUhr_Tick);
-            // 
-            // labelZeit
-            // 
-            this.labelZeit.AutoSize = true;
-            this.labelZeit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelZeit.Location = new System.Drawing.Point(1638, 74);
-            this.labelZeit.Name = "labelZeit";
-            this.labelZeit.Size = new System.Drawing.Size(226, 69);
-            this.labelZeit.TabIndex = 29;
-            this.labelZeit.Text = "Uhrzeit";
             // 
             // GleisKante
             // 
@@ -407,6 +403,22 @@
             this.Dauer.Name = "Dauer";
             this.Dauer.Width = 75;
             // 
+            // timerUhrzeit
+            // 
+            this.timerUhrzeit.Enabled = true;
+            this.timerUhrzeit.Interval = 500;
+            this.timerUhrzeit.Tick += new System.EventHandler(this.timerUhr_Tick);
+            // 
+            // labelZeit
+            // 
+            this.labelZeit.AutoSize = true;
+            this.labelZeit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelZeit.Location = new System.Drawing.Point(1638, 74);
+            this.labelZeit.Name = "labelZeit";
+            this.labelZeit.Size = new System.Drawing.Size(226, 69);
+            this.labelZeit.TabIndex = 29;
+            this.labelZeit.Text = "Uhrzeit";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -441,7 +453,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelUhrzeit;
         private System.Windows.Forms.Splitter splitter2;
-        private System.Windows.Forms.ComboBox comboBoxStation;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
@@ -472,6 +483,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Von;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nach;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dauer;
+        private System.Windows.Forms.TextBox textBoxStation;
+        private System.Windows.Forms.ListBox listBoxStationVorschlaege;
     }
 }
 

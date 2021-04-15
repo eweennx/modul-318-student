@@ -51,18 +51,12 @@ namespace MyTransportApp
 
         public void Verbindungen(string from, string to)
         {
-           
-                
                  for (int i = 0; i < 4; i++)
                  {
                      //Dauer Trimmen, das nicht 00d oder 00h steht
                      string VerbindungDauer = transport.GetConnections(from, to).ConnectionList[i].Duration.ToString();
                      string resultVerbindungsDauer = VerbindungDauer.TrimStart(" 0d".ToCharArray());
                      string resultVerbindungsDauer2 = resultVerbindungsDauer.Trim(":".ToCharArray());
-
-                    //Datum Trimmen, nur Zeit nicht Tag,Monat,Jahr
-                    
-                    
 
                     dataGridViewVerbindungen.Rows.Add(new[]
                     {
@@ -82,17 +76,32 @@ namespace MyTransportApp
             Verbindungen(textBoxStart.Text, textBoxZielStation.Text);
         }
 
-        private void listBoxStartVorschlaege_MouseClick(object sender, MouseEventArgs e)
+        private void listBoxStartVorschlaege_SelectedIndexChanged(object sender, MouseEventArgs e)
         {
             textBoxStart.Text = Convert.ToString(listBoxStartVorschlaege.SelectedItem);
         }
 
-        private void listBoxZielVorschlaege_MouseClick(object sender, MouseEventArgs e)
+        private void listBoxZielVorschlaege_SelectedIndexChanged(object sender, MouseEventArgs e)
         {
             textBoxZielStation.Text = Convert.ToString(listBoxZielVorschlaege.SelectedItem);
         }
 
-        
+        private void textBoxStation_TextChanged(object sender, EventArgs e)
+        {
+            listBoxStationVorschlaege.Items.Clear();
+            Stations Vorschlag = transport.GetStations(textBoxStation.Text);
+
+            foreach (Station station in Vorschlag.StationList)
+            {
+                listBoxStationVorschlaege.Items.Add(station.Name);
+            }
+        }
+
+
+        private void listBoxStationVorschlaege_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBoxStation.Text = listBoxStationVorschlaege.SelectedItem.ToString();
+        }
     }
  } 
        
