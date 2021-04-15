@@ -57,6 +57,27 @@
             return HttpClient.GetObject(uri, JsonConvert.DeserializeObject<Connections>);
         }
 
+        public Connections GetConnections2(string fromStation, string toStation, string datum)
+        {
+            if (string.IsNullOrEmpty(fromStation))
+            {
+                throw new ArgumentNullException(nameof(fromStation));
+            }
+
+            if (string.IsNullOrEmpty(toStation))
+            {
+                throw new ArgumentNullException(nameof(toStation));
+            }
+
+            if (string.IsNullOrEmpty(datum))
+            {
+                throw new ArgumentNullException(nameof(datum));
+            }
+
+            var uri = new Uri($"{WebApiHost}connections?from={fromStation}&to={toStation}&datum={datum}");
+            return HttpClient.GetObject(uri, JsonConvert.DeserializeObject<Connections>);
+        }
+
         public void Dispose()
         {
             HttpClient?.Dispose();

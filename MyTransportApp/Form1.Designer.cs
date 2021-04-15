@@ -43,6 +43,9 @@
             this.listBoxStationVorschlaege = new System.Windows.Forms.ListBox();
             this.textBoxStation = new System.Windows.Forms.TextBox();
             this.dataGridViewAbfahrtstafel = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -63,9 +66,7 @@
             this.Dauer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timerUhrzeit = new System.Windows.Forms.Timer(this.components);
             this.labelZeit = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAbfahrtstafel)).BeginInit();
             this.panel3.SuspendLayout();
@@ -214,6 +215,30 @@
             this.dataGridViewAbfahrtstafel.Size = new System.Drawing.Size(736, 343);
             this.dataGridViewAbfahrtstafel.TabIndex = 31;
             // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Zeit";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 12;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 72;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Nummer";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 12;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Nach";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 12;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 150;
+            // 
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -245,7 +270,7 @@
             // 
             // buttonVerbindungenSuchen
             // 
-            this.buttonVerbindungenSuchen.Location = new System.Drawing.Point(473, 479);
+            this.buttonVerbindungenSuchen.Location = new System.Drawing.Point(486, 283);
             this.buttonVerbindungenSuchen.Name = "buttonVerbindungenSuchen";
             this.buttonVerbindungenSuchen.Size = new System.Drawing.Size(234, 64);
             this.buttonVerbindungenSuchen.TabIndex = 16;
@@ -266,6 +291,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.buttonSendMail);
             this.panel1.Controls.Add(this.buttonChangeStation);
             this.panel1.Controls.Add(this.listBoxZielVorschlaege);
@@ -407,35 +433,18 @@
             // 
             this.labelZeit.AutoSize = true;
             this.labelZeit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelZeit.Location = new System.Drawing.Point(1638, 74);
+            this.labelZeit.Location = new System.Drawing.Point(1629, 83);
             this.labelZeit.Name = "labelZeit";
             this.labelZeit.Size = new System.Drawing.Size(226, 69);
             this.labelZeit.TabIndex = 29;
             this.labelZeit.Text = "Uhrzeit";
             // 
-            // dataGridViewTextBoxColumn2
+            // dateTimePicker1
             // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Zeit";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 12;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 72;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Nummer";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 12;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Nach";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 12;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 150;
+            this.dateTimePicker1.Location = new System.Drawing.Point(346, 488);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(499, 38);
+            this.dateTimePicker1.TabIndex = 30;
             // 
             // Form1
             // 
@@ -504,6 +513,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
 
