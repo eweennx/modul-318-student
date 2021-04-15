@@ -23,12 +23,10 @@ namespace MyTransportApp
            
         }
 
-
         private void timerUhr_Tick(object sender, EventArgs e)
         {
             labelZeit.Text = DateTime.Now.ToString("HH:mm:ss");
         }
-
 
         private void textBoxStart_TextChanged_1(object sender, EventArgs e)
           {
@@ -49,7 +47,6 @@ namespace MyTransportApp
             }   
          }
 
-
         private void textBoxZielStation_TextChanged_1(object sender, EventArgs e)
         {
             try
@@ -69,7 +66,6 @@ namespace MyTransportApp
             }
         }
 
-
         private void buttonChangeStation_Click(object sender, EventArgs e)
         {
             try
@@ -84,7 +80,6 @@ namespace MyTransportApp
 
             }
         }
-
 
         public void Verbindungen(string from, string to, string date, string time)
         {
@@ -114,7 +109,6 @@ namespace MyTransportApp
                      
         }
 
-
         private void buttonVerbindungenSuchen_Click(object sender, EventArgs e)
         {
             try
@@ -129,18 +123,15 @@ namespace MyTransportApp
             }
         }
 
-
         private void listBoxStartVorschlaege_SelectedIndexChanged(object sender, MouseEventArgs e)
         {
             textBoxStart.Text = Convert.ToString(listBoxStartVorschlaege.SelectedItem);
         }
 
-
         private void listBoxZielVorschlaege_SelectedIndexChanged(object sender, MouseEventArgs e)
         {
             textBoxZielStation.Text = Convert.ToString(listBoxZielVorschlaege.SelectedItem);
         }
-
 
         private void textBoxStation_TextChanged(object sender, EventArgs e)
         {
@@ -162,18 +153,15 @@ namespace MyTransportApp
 
         }
   
-
         private void listBoxStationVorschlaege_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBoxStation.Text = listBoxStationVorschlaege.SelectedItem.ToString();
         }
 
-
         private string timetabelId(string station)
         {
             return transport.GetStations(station).StationList[0].Id.ToString();
         }
-
 
         private void buttonAbfahrtstafelSuchen_Click(object sender, EventArgs e)
         {
@@ -195,6 +183,7 @@ namespace MyTransportApp
                 }
                 
             }
+
             catch
             {
                 MessageBox.Show("Geht nicht !");
@@ -223,8 +212,6 @@ namespace MyTransportApp
                 Process.Start(@"mailto:?subject=" + MailMessage.Subject + "&body=" + MailMessage.Body);
             }
         }
-
-      
     }
  } 
        
