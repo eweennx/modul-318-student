@@ -52,6 +52,7 @@
             this.buttonVerbindungenSuchen = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.datepicker = new System.Windows.Forms.DateTimePicker();
             this.buttonSendMail = new System.Windows.Forms.Button();
             this.buttonChangeStation = new System.Windows.Forms.Button();
             this.listBoxZielVorschlaege = new System.Windows.Forms.ListBox();
@@ -66,7 +67,8 @@
             this.Dauer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timerUhrzeit = new System.Windows.Forms.Timer(this.components);
             this.labelZeit = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.timepicker = new System.Windows.Forms.DateTimePicker();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAbfahrtstafel)).BeginInit();
             this.panel3.SuspendLayout();
@@ -291,7 +293,9 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.dateTimePicker1);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.timepicker);
+            this.panel1.Controls.Add(this.datepicker);
             this.panel1.Controls.Add(this.buttonSendMail);
             this.panel1.Controls.Add(this.buttonChangeStation);
             this.panel1.Controls.Add(this.listBoxZielVorschlaege);
@@ -307,6 +311,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1192, 1127);
             this.panel1.TabIndex = 26;
+            // 
+            // datepicker
+            // 
+            this.datepicker.CustomFormat = "yyyy:MM:dd hh/mm";
+            this.datepicker.Location = new System.Drawing.Point(128, 502);
+            this.datepicker.Name = "datepicker";
+            this.datepicker.Size = new System.Drawing.Size(499, 38);
+            this.datepicker.TabIndex = 30;
             // 
             // buttonSendMail
             // 
@@ -439,12 +451,25 @@
             this.labelZeit.TabIndex = 29;
             this.labelZeit.Text = "Uhrzeit";
             // 
-            // dateTimePicker1
+            // timepicker
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(346, 488);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(499, 38);
-            this.dateTimePicker1.TabIndex = 30;
+            this.timepicker.CustomFormat = "HH:mm";
+            this.timepicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.timepicker.Location = new System.Drawing.Point(698, 502);
+            this.timepicker.Name = "timepicker";
+            this.timepicker.ShowUpDown = true;
+            this.timepicker.Size = new System.Drawing.Size(298, 38);
+            this.timepicker.TabIndex = 30;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(521, 402);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(182, 55);
+            this.label10.TabIndex = 30;
+            this.label10.Text = "Wann?";
             // 
             // Form1
             // 
@@ -513,7 +538,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker datepicker;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DateTimePicker timepicker;
     }
 }
 

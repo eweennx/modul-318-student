@@ -12,6 +12,7 @@
 
         Connections GetConnections(string fromStation, string toStation);
 
-        Connections GetConnections2(string fromStation, string toStation, string datum);
+        Connections GetConnections(string fromStation, string toStation, string date);
+        Connections GetConnections(string fromStation, string toStation, string date, string time);
     }
 }

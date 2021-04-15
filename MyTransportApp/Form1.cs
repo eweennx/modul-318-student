@@ -86,30 +86,18 @@ namespace MyTransportApp
         }
 
 
-        public void Verbindungen(string from, string to, string datumZukunft)
+        public void Verbindungen(string from, string to, string date, string time)
         {
             
-            List <Connection> VerbindungenSuchen = transport.GetConnections2(from, to, datumZukunft).ConnectionList;
+            List <Connection> VerbindungenSuchen = transport.GetConnections(from, to, date, time).ConnectionList;
                  
             for (int i = 0; i < 4; i++)
                  {
-                string VerbindungDauer = transport.GetConnections2(from, to, datumZukunft).ConnectionList[i].Duration.ToString();
                 //Dauer Trimmen, das nicht 00d oder 00h steht
-                if (datumZukunft != DateTime.Now.ToString("YYYY:mm:dd"))
-                {
-                    dataGridViewVerbindungen.Rows.Add(new[]
-                   {
-                         VerbindungenSuchen[i].From.Platform,
-                         VerbindungenSuchen[i].From.Departure?.ToString("HH:mm") ?? "unbekannt",
-                         VerbindungenSuchen[i].From.Station.Name,
-                         VerbindungenSuchen[i].To.Station.Name,
-                         VerbindungDauer
-                    }); ; ;
-                }
-                else
-                {
+                string VerbindungDauer = transport.GetConnections(from, to, date,time).ConnectionList[i].Duration.ToString();
+                
                         string resultVerbindungsDauer = VerbindungDauer.TrimStart(" 0d".ToCharArray());
-                         string resultVerbindungsDauer2 = resultVerbindungsDauer.Trim(":".ToCharArray());
+                        string resultVerbindungsDauer2 = resultVerbindungsDauer.Trim(":".ToCharArray());
 
                 
                         dataGridViewVerbindungen.Rows.Add(new[]
@@ -120,7 +108,7 @@ namespace MyTransportApp
                               VerbindungenSuchen[i].To.Station.Name,
                               resultVerbindungsDauer2
                         }); ; ;
-                }
+                
             }
                     
                      
@@ -133,7 +121,7 @@ namespace MyTransportApp
             {
             dataGridViewVerbindungen.Rows.Clear();
             dataGridViewVerbindungen.Refresh();
-            Verbindungen(textBoxStart.Text, textBoxZielStation.Text, dateTimePicker1.Value.ToString("YYYY:mm:dd"));
+            Verbindungen(textBoxStart.Text, textBoxZielStation.Text, datepicker.Value.ToString("yyyy-MM-dd"), timepicker.Value.ToString("HH:mm"));
             }
             catch
             {
