@@ -195,21 +195,17 @@ namespace MyTransportApp
         {
             var MailMessage = new MailMessage();
             {
-                MailMessage.Subject = "ÖV Verbindungen";
-                MailMessage.From = new MailAddress("steam@vac.uk");
+                MailMessage.Subject = "ÖV Verbindungen von " + this.textBoxStart.Text + " nach " + this.textBoxZielStation.Text + "%0D%0A";
                 MailMessage.IsBodyHtml = true;
-
-
-                MailMessage.Body = "Von: " + this.textBoxStart.Text + "%0D%0A";
-                MailMessage.Body = "Nach: " + this.textBoxZielStation.Text + " %0D%0A";
-                
+     
                     for (int i = 0; i< this.dataGridViewVerbindungen.RowCount - 1; i++)
                     {
-                    MailMessage.Body += "Gleis: " + this.dataGridViewVerbindungen.Rows[i].Cells[0].Value + "&#9";
-                    MailMessage.Body += "Zeit: " + this.dataGridViewVerbindungen.Rows[i].Cells[1].Value + "&#9";
-                    MailMessage.Body += "Dauer: " + this.dataGridViewVerbindungen.Rows[i].Cells[4].Value + "&#9";
+                    MailMessage.Body += "Gleis: " + this.dataGridViewVerbindungen.Rows[i].Cells[0].Value;
+                    MailMessage.Body += "  //  Zeit: " + this.dataGridViewVerbindungen.Rows[i].Cells[1].Value;
+                    MailMessage.Body += "  //  Dauer: " + this.dataGridViewVerbindungen.Rows[i].Cells[4].Value;
+                    MailMessage.Body += "%0D%0A";
                     }
-                Process.Start(@"mailto:?subject=" + MailMessage.Subject + "&body=" + MailMessage.Body);
+                Process.Start(@"mailto:?subject=" + MailMessage.Subject + MailMessage.Body);
             }
         }
     }
