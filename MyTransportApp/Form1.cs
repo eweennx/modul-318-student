@@ -170,7 +170,7 @@ namespace MyTransportApp
 
                 if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable() == true)
                 {
-                    MessageBox.Show("Plesesee");
+                    MessageBox.Show("Bitte überprüfe deine Internet Verbindung!");
                 }
                 else
                 {
