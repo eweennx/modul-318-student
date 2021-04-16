@@ -20,7 +20,10 @@ namespace MyTransportApp
         public Form1()
         {
             InitializeComponent();
-           
+            buttonChangeStation.Enabled = false;
+            buttonVerbindungenSuchen.Enabled = false;
+            buttonSendMail.Enabled = false;
+            buttonAbfahrtstafelSuchen.Enabled = false;
         }
 
         private void timerUhr_Tick(object sender, EventArgs e)
@@ -30,6 +33,24 @@ namespace MyTransportApp
 
         private void textBoxStart_TextChanged_1(object sender, EventArgs e)
           {
+            if (!string.IsNullOrEmpty(textBoxZielStation.Text) || !string.IsNullOrEmpty(textBoxStart.Text))
+            {
+                buttonChangeStation.Enabled = true;
+            }
+            else
+            {
+                buttonChangeStation.Enabled = false;
+            }
+
+            if (string.IsNullOrEmpty(textBoxZielStation.Text) || string.IsNullOrEmpty(textBoxStart.Text))
+            {
+                buttonVerbindungenSuchen.Enabled = false;
+            }
+            else
+            {
+                buttonVerbindungenSuchen.Enabled = true;
+            }
+
             try
             {
                 //anzeigen von vorschlägen
@@ -49,6 +70,25 @@ namespace MyTransportApp
 
         private void textBoxZielStation_TextChanged_1(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(textBoxZielStation.Text) || !string.IsNullOrEmpty(textBoxStart.Text))
+            {
+                buttonChangeStation.Enabled = true;
+            }
+            else
+            {
+                buttonChangeStation.Enabled = false;
+            }
+
+            if(string.IsNullOrEmpty(textBoxZielStation.Text) || string.IsNullOrEmpty(textBoxStart.Text))
+            {
+                buttonVerbindungenSuchen.Enabled = false;
+            }
+            else
+            {
+                buttonVerbindungenSuchen.Enabled = true;
+            }
+
+
             try
             {
                 //anzeigen von vorschlägen
@@ -116,6 +156,7 @@ namespace MyTransportApp
             dataGridViewVerbindungen.Rows.Clear();
             dataGridViewVerbindungen.Refresh();
             Verbindungen(textBoxStart.Text, textBoxZielStation.Text, datepicker.Value.ToString("yyyy-MM-dd"), timepicker.Value.ToString("HH:mm"));
+                buttonSendMail.Enabled = true;
             }
             catch
             {
@@ -135,6 +176,15 @@ namespace MyTransportApp
 
         private void textBoxStation_TextChanged(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBoxStation.Text))
+            {
+                buttonAbfahrtstafelSuchen.Enabled = false;
+            }
+            else
+            {
+                buttonAbfahrtstafelSuchen.Enabled = true;
+            }
+
             try
             {
                 listBoxStationVorschlaege.Items.Clear();

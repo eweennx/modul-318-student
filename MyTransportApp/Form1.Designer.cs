@@ -52,6 +52,8 @@
             this.buttonVerbindungenSuchen = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.timepicker = new System.Windows.Forms.DateTimePicker();
             this.datepicker = new System.Windows.Forms.DateTimePicker();
             this.buttonSendMail = new System.Windows.Forms.Button();
             this.buttonChangeStation = new System.Windows.Forms.Button();
@@ -67,8 +69,6 @@
             this.Dauer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timerUhrzeit = new System.Windows.Forms.Timer(this.components);
             this.labelZeit = new System.Windows.Forms.Label();
-            this.timepicker = new System.Windows.Forms.DateTimePicker();
-            this.label10 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAbfahrtstafel)).BeginInit();
             this.panel3.SuspendLayout();
@@ -107,7 +107,7 @@
             // 
             this.splitter2.Location = new System.Drawing.Point(0, 0);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(8, 1531);
+            this.splitter2.Size = new System.Drawing.Size(8, 1612);
             this.splitter2.TabIndex = 10;
             this.splitter2.TabStop = false;
             // 
@@ -177,9 +177,9 @@
             this.panel2.Controls.Add(this.buttonAbfahrtstafelSuchen);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Location = new System.Drawing.Point(1303, 193);
+            this.panel2.Location = new System.Drawing.Point(1303, 186);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(834, 852);
+            this.panel2.Size = new System.Drawing.Size(834, 859);
             this.panel2.TabIndex = 27;
             // 
             // listBoxStationVorschlaege
@@ -311,6 +311,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1192, 1127);
             this.panel1.TabIndex = 26;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(521, 402);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(182, 55);
+            this.label10.TabIndex = 30;
+            this.label10.Text = "Wann?";
+            // 
+            // timepicker
+            // 
+            this.timepicker.CustomFormat = "HH:mm";
+            this.timepicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.timepicker.Location = new System.Drawing.Point(698, 502);
+            this.timepicker.Name = "timepicker";
+            this.timepicker.ShowUpDown = true;
+            this.timepicker.Size = new System.Drawing.Size(298, 38);
+            this.timepicker.TabIndex = 30;
             // 
             // datepicker
             // 
@@ -451,31 +471,11 @@
             this.labelZeit.TabIndex = 29;
             this.labelZeit.Text = "Uhrzeit";
             // 
-            // timepicker
-            // 
-            this.timepicker.CustomFormat = "HH:mm";
-            this.timepicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timepicker.Location = new System.Drawing.Point(698, 502);
-            this.timepicker.Name = "timepicker";
-            this.timepicker.ShowUpDown = true;
-            this.timepicker.Size = new System.Drawing.Size(298, 38);
-            this.timepicker.TabIndex = 30;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(521, 402);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(182, 55);
-            this.label10.TabIndex = 30;
-            this.label10.Text = "Wann?";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2201, 1531);
+            this.ClientSize = new System.Drawing.Size(2201, 1612);
             this.Controls.Add(this.labelZeit);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
