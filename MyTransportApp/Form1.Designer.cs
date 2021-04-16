@@ -135,7 +135,7 @@
             this.buttonAbfahrtstafelSuchen.Location = new System.Drawing.Point(305, 467);
             this.buttonAbfahrtstafelSuchen.Name = "buttonAbfahrtstafelSuchen";
             this.buttonAbfahrtstafelSuchen.Size = new System.Drawing.Size(191, 55);
-            this.buttonAbfahrtstafelSuchen.TabIndex = 24;
+            this.buttonAbfahrtstafelSuchen.TabIndex = 7;
             this.buttonAbfahrtstafelSuchen.Text = "Suchen";
             this.buttonAbfahrtstafelSuchen.UseVisualStyleBackColor = true;
             this.buttonAbfahrtstafelSuchen.Click += new System.EventHandler(this.buttonAbfahrtstafelSuchen_Click);
@@ -179,7 +179,7 @@
             this.textBoxStation.Location = new System.Drawing.Point(223, 128);
             this.textBoxStation.Name = "textBoxStation";
             this.textBoxStation.Size = new System.Drawing.Size(358, 38);
-            this.textBoxStation.TabIndex = 30;
+            this.textBoxStation.TabIndex = 6;
             this.textBoxStation.TextChanged += new System.EventHandler(this.textBoxStation_TextChanged);
             // 
             // dataGridViewAbfahrtstafel
@@ -246,7 +246,7 @@
             this.buttonVerbindungenSuchen.Location = new System.Drawing.Point(478, 327);
             this.buttonVerbindungenSuchen.Name = "buttonVerbindungenSuchen";
             this.buttonVerbindungenSuchen.Size = new System.Drawing.Size(234, 64);
-            this.buttonVerbindungenSuchen.TabIndex = 16;
+            this.buttonVerbindungenSuchen.TabIndex = 4;
             this.buttonVerbindungenSuchen.Text = "Suchen";
             this.buttonVerbindungenSuchen.UseVisualStyleBackColor = true;
             this.buttonVerbindungenSuchen.Click += new System.EventHandler(this.buttonVerbindungenSuchen_Click);
@@ -331,7 +331,7 @@
             this.timepicker.Name = "timepicker";
             this.timepicker.ShowUpDown = true;
             this.timepicker.Size = new System.Drawing.Size(167, 38);
-            this.timepicker.TabIndex = 30;
+            this.timepicker.TabIndex = 3;
             // 
             // datepicker
             // 
@@ -339,14 +339,14 @@
             this.datepicker.Location = new System.Drawing.Point(194, 502);
             this.datepicker.Name = "datepicker";
             this.datepicker.Size = new System.Drawing.Size(499, 38);
-            this.datepicker.TabIndex = 30;
+            this.datepicker.TabIndex = 2;
             // 
             // buttonSendMail
             // 
             this.buttonSendMail.Location = new System.Drawing.Point(956, 1070);
             this.buttonSendMail.Name = "buttonSendMail";
             this.buttonSendMail.Size = new System.Drawing.Size(177, 66);
-            this.buttonSendMail.TabIndex = 30;
+            this.buttonSendMail.TabIndex = 5;
             this.buttonSendMail.Text = "Mail";
             this.buttonSendMail.UseVisualStyleBackColor = true;
             this.buttonSendMail.Click += new System.EventHandler(this.buttonSendMail_Click);
@@ -387,7 +387,7 @@
             this.textBoxZielStation.Location = new System.Drawing.Point(775, 144);
             this.textBoxZielStation.Name = "textBoxZielStation";
             this.textBoxZielStation.Size = new System.Drawing.Size(358, 38);
-            this.textBoxZielStation.TabIndex = 30;
+            this.textBoxZielStation.TabIndex = 1;
             this.textBoxZielStation.TextChanged += new System.EventHandler(this.textBoxZielStation_TextChanged_1);
             // 
             // textBoxStart
@@ -395,7 +395,7 @@
             this.textBoxStart.Location = new System.Drawing.Point(59, 144);
             this.textBoxStart.Name = "textBoxStart";
             this.textBoxStart.Size = new System.Drawing.Size(358, 38);
-            this.textBoxStart.TabIndex = 30;
+            this.textBoxStart.TabIndex = 0;
             this.textBoxStart.TextChanged += new System.EventHandler(this.textBoxStart_TextChanged_1);
             // 
             // dataGridViewVerbindungen
