@@ -70,7 +70,6 @@
             this.Dauer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timerUhrzeit = new System.Windows.Forms.Timer(this.components);
             this.labelZeit = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAbfahrtstafel)).BeginInit();
             this.panel1.SuspendLayout();
@@ -308,7 +307,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(507, 105);
+            this.label8.Location = new System.Drawing.Point(520, 105);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(140, 32);
             this.label8.TabIndex = 30;
@@ -327,7 +326,7 @@
             // timepicker
             // 
             this.timepicker.CustomFormat = "HH:mm";
-            this.timepicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.timepicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.timepicker.Location = new System.Drawing.Point(740, 502);
             this.timepicker.Name = "timepicker";
             this.timepicker.ShowUpDown = true;
@@ -355,7 +354,7 @@
             // buttonChangeStation
             // 
             this.buttonChangeStation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonChangeStation.Location = new System.Drawing.Point(513, 153);
+            this.buttonChangeStation.Location = new System.Drawing.Point(526, 144);
             this.buttonChangeStation.Name = "buttonChangeStation";
             this.buttonChangeStation.Size = new System.Drawing.Size(134, 71);
             this.buttonChangeStation.TabIndex = 30;
@@ -473,20 +472,12 @@
             this.labelZeit.TabIndex = 29;
             this.labelZeit.Text = "Uhrzeit";
             // 
-            // label9
-            // 
-            this.label9.Location = new System.Drawing.Point(0, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(100, 23);
-            this.label9.TabIndex = 0;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(2201, 1612);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.labelZeit);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.splitter2);
@@ -540,7 +531,6 @@
         private System.Windows.Forms.DateTimePicker timepicker;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;

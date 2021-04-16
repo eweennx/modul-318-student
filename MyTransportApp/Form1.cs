@@ -33,77 +33,14 @@ namespace MyTransportApp
 
         private void textBoxStart_TextChanged_1(object sender, EventArgs e)
           {
-            if (!string.IsNullOrEmpty(textBoxZielStation.Text) || !string.IsNullOrEmpty(textBoxStart.Text))
-            {
-                buttonChangeStation.Enabled = true;
-            }
-            else
-            {
-                buttonChangeStation.Enabled = false;
-            }
-
-            if (string.IsNullOrEmpty(textBoxZielStation.Text) || string.IsNullOrEmpty(textBoxStart.Text))
-            {
-                buttonVerbindungenSuchen.Enabled = false;
-            }
-            else
-            {
-                buttonVerbindungenSuchen.Enabled = true;
-            }
-
-            try
-            {
-                //anzeigen von vorschlägen
-                listBoxStartVorschlaege.Items.Clear();
-                List<Station> stationenStart = transport.GetStations(textBoxStart.Text + "*").StationList;
-
-                foreach (Station station in stationenStart)
-                {
-                    listBoxStartVorschlaege.Items.Add(station.Name);
-                }
-            }
-            catch
-            {
-
-            }   
+            ButtonChangeAndSearchConnectionEnableDisable.ButtonEnableDisableChangeSearchConn(textBoxStart.Text, textBoxZielStation.Text, buttonChangeStation, buttonVerbindungenSuchen);
+            Vorschlaege.VorschlaegeFunction(textBoxStart.Text, listBoxStartVorschlaege);  
          }
 
         private void textBoxZielStation_TextChanged_1(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBoxZielStation.Text) || !string.IsNullOrEmpty(textBoxStart.Text))
-            {
-                buttonChangeStation.Enabled = true;
-            }
-            else
-            {
-                buttonChangeStation.Enabled = false;
-            }
-
-            if(string.IsNullOrEmpty(textBoxZielStation.Text) || string.IsNullOrEmpty(textBoxStart.Text))
-            {
-                buttonVerbindungenSuchen.Enabled = false;
-            }
-            else
-            {
-                buttonVerbindungenSuchen.Enabled = true;
-            }
-
-
-            try
-            {
-                //anzeigen von vorschlägen
-                listBoxZielVorschlaege.Items.Clear();
-                List<Station> stationenZiel = transport.GetStations(textBoxZielStation.Text + "*").StationList;
-
-                foreach (Station station in stationenZiel)
-                {
-                    listBoxZielVorschlaege.Items.Add(station.Name);
-                }
-            }
-            catch
-            {
-
-            }
+            ButtonChangeAndSearchConnectionEnableDisable.ButtonEnableDisableChangeSearchConn(textBoxStart.Text, textBoxZielStation.Text, buttonChangeStation, buttonVerbindungenSuchen);
+            Vorschlaege.VorschlaegeFunction(textBoxZielStation.Text, listBoxZielVorschlaege);
         }
 
         private void buttonChangeStation_Click(object sender, EventArgs e)
@@ -129,8 +66,7 @@ namespace MyTransportApp
             for (int i = 0; i < 4; i++)
                  {
                 //Dauer Trimmen, das nicht 00d oder 00h steht
-                string VerbindungDauer = transport.GetConnections(from, to, date,time).ConnectionList[i].Duration.ToString();
-                
+                        string VerbindungDauer = transport.GetConnections(from, to, date,time).ConnectionList[i].Duration.ToString();
                         string resultVerbindungsDauer = VerbindungDauer.TrimStart(" 0d".ToCharArray());
                         string resultVerbindungsDauer2 = resultVerbindungsDauer.Trim(":".ToCharArray());
 
@@ -143,69 +79,42 @@ namespace MyTransportApp
                               VerbindungenSuchen[i].To.Station.Name,
                               resultVerbindungsDauer2
                         }); ; ;
-                
-            }
-                    
-                     
+            }  
         }
 
         private void buttonVerbindungenSuchen_Click(object sender, EventArgs e)
         {
             try
             {
-            dataGridViewVerbindungen.Rows.Clear();
-            dataGridViewVerbindungen.Refresh();
-            Verbindungen(textBoxStart.Text, textBoxZielStation.Text, datepicker.Value.ToString("yyyy-MM-dd"), timepicker.Value.ToString("HH:mm"));
+                DataGridViewClear.DataGridViewClearAndRefresh(dataGridViewVerbindungen);
+                Verbindungen(textBoxStart.Text, textBoxZielStation.Text, datepicker.Value.ToString("yyyy-MM-dd"), timepicker.Value.ToString("HH:mm"));
                 buttonSendMail.Enabled = true;
             }
             catch
             {
-                MessageBox.Show("Bitte gebe eine Start- und Ziel-Station ein!");
+                MessageBox.Show("Unknown ERROR!");
             }
         }
 
         private void listBoxStartVorschlaege_SelectedIndexChanged(object sender, MouseEventArgs e)
         {
-            textBoxStart.Text = Convert.ToString(listBoxStartVorschlaege.SelectedItem);
+            SelectVorschlag.SelectVorschlagToTextBox(textBoxStart, (ListBox)sender);
         }
 
         private void listBoxZielVorschlaege_SelectedIndexChanged(object sender, MouseEventArgs e)
         {
-            textBoxZielStation.Text = Convert.ToString(listBoxZielVorschlaege.SelectedItem);
+            SelectVorschlag.SelectVorschlagToTextBox(textBoxZielStation, listBoxZielVorschlaege);
         }
 
         private void textBoxStation_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textBoxStation.Text))
-            {
-                buttonAbfahrtstafelSuchen.Enabled = false;
-            }
-            else
-            {
-                buttonAbfahrtstafelSuchen.Enabled = true;
-            }
-
-            try
-            {
-                listBoxStationVorschlaege.Items.Clear();
-                List<Station> stationenStation = transport.GetStations(textBoxStation.Text + "*").StationList;
-
-                foreach (Station station in stationenStation)
-                {
-                    listBoxStationVorschlaege.Items.Add(station.Name);
-                }
-            }
-
-            catch
-            {
-
-            }
-
+            ButtonEnableDisableSearchTable.ButtonEnableDisableTable(textBoxStation.Text, buttonAbfahrtstafelSuchen);
+            Vorschlaege.VorschlaegeFunction(textBoxStation.Text, listBoxStationVorschlaege);
         }
   
         private void listBoxStationVorschlaege_SelectedIndexChanged(object sender, EventArgs e)
         {
-            textBoxStation.Text = listBoxStationVorschlaege.SelectedItem.ToString();
+            SelectVorschlag.SelectVorschlagToTextBox(textBoxStation, listBoxStationVorschlaege);
         }
 
         private string timetabelId(string station)
@@ -217,8 +126,7 @@ namespace MyTransportApp
         {
             try
             {
-                dataGridViewAbfahrtstafel.Rows.Clear();
-                dataGridViewAbfahrtstafel.Refresh();
+                DataGridViewClear.DataGridViewClearAndRefresh(dataGridViewAbfahrtstafel);
                 List<StationBoard> AbfahrtsBoard = transport.GetStationBoard(textBoxStation.Text, timetabelId(textBoxStation.Text)).Entries;
 
                 for (int i = 0; i < 10; i++)
@@ -231,14 +139,12 @@ namespace MyTransportApp
                     });
                     ;
                 }
-                
             }
 
             catch
             {
                 MessageBox.Show("Geht nicht !");
             }
-
         }
 
         private void buttonSendMail_Click (object sender, EventArgs e)
